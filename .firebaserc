@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "buns-6015d"
+  },
+  "targets": {
+    "buns-6015d": {
+      "hosting": {
+        "user": [
+          "buns-6015d"
+        ]
+      }
+    }
+  }
+}

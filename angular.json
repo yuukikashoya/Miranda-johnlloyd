@@ -94,8 +94,21 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "user:build:production",
+            "firebaseProject": "buns-6015d",
+            "firebaseHostingSite": "buns-6015d"
+          }
         }
       }
     }
+  },
+  "cli": {
+    "analytics": false
   }
 }
