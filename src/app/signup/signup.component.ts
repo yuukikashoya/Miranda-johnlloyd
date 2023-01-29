@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Auth,createUserWithEmailAndPassword,signInWithEmailAndPassword  } from '@angular/fire/auth';
-
+import { Database,set,ref } from '@angular/fire/database';
 
 @Component({
   selector: 'app-signup',
@@ -9,7 +9,7 @@ import { Auth,createUserWithEmailAndPassword,signInWithEmailAndPassword  } from 
 })
 export class SignupComponent implements OnInit {
 
-  constructor(public auth:Auth) { }
+  constructor(public auth:Auth, public database:Database)  { }
 
   ngOnInit(): void {
   }
@@ -18,8 +18,12 @@ export class SignupComponent implements OnInit {
     createUserWithEmailAndPassword(this.auth, value.email, value.password)
     .then((userCredential) => {
       // Signed in 
-      const user = userCredential.user;
+      const account = userCredential.user;
+      set(ref(this.database, 'accounts/' + account.uid),{
+        name:value.password,
+        email:value.email
 
+      })
       alert('account created');
 
       // ...
