@@ -1,6 +1,11 @@
 /* Made with love by Mutiullah Samim*/
 
-
+.lipat{
+    color: rgb(58, 48, 32);
+}
+.lipat:hover{
+    color: rgb(255, 255, 255);
+}
 
 .container{
 height: 100%;
