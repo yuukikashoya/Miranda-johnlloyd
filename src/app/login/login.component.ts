@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Auth, signInWithEmailAndPassword  } from "@angular/fire/auth";
-import { Database,set,ref,update,onValue,getDatabase } from '@angular/fire/database';
+import { Database,ref,update } from '@angular/fire/database';
 import {  Router } from '@angular/router';
 
 @Component({
@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  registerUser(value: any){
+  loginUser(value: any){
     signInWithEmailAndPassword(this.auth, value.email, value.password)
     .then((userCredential) => {
       // Signed in 
