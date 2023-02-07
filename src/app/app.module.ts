@@ -11,6 +11,7 @@ import { provideAuth,getAuth } from '@angular/fire/auth';
 import { provideDatabase,getDatabase } from '@angular/fire/database';
 import { FormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
+import { DisplayComponent } from './display/display.component';
 
 
 
@@ -19,6 +20,7 @@ import { LoginComponent } from './login/login.component';
     AppComponent,
     SignupComponent,
     LoginComponent,
+    DisplayComponent,
     
   ],
   imports: [

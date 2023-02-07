@@ -21,8 +21,9 @@ export class SignupComponent implements OnInit {
       // Signed in 
       const account = userCredential.user;
       set(ref(this.database, 'accounts/' + account.uid),{
-        name:value.password,
-        email:value.email
+        name:value.name,
+        email:value.email,
+        password:value.password
 
       })
       alert('account created');

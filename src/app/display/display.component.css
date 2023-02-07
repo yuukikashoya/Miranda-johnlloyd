@@ -1,0 +1,15 @@
+.font{
+    color: white;
+}
+.box{
+    padding: 10em;
+    padding-left: 15em;
+    padding-right: 15em;
+    text-align: center;
+}
+.high{
+    cursor: pointer;
+}
+.high:Hover{
+    font-weight: bold;
+}
