@@ -12,6 +12,9 @@ import { provideDatabase,getDatabase } from '@angular/fire/database';
 import { FormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { DisplayComponent } from './display/display.component';
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
+
 
 
 
@@ -27,9 +30,12 @@ import { DisplayComponent } from './display/display.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+      AngularFireModule.initializeApp(environment. firebase),
+    AngularFireDatabaseModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
-    provideDatabase(() => getDatabase())
+    provideDatabase(() => getDatabase()),
+
   ],
   providers: [],
   bootstrap: [AppComponent]

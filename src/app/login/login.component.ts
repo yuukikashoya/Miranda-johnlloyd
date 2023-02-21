@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
   }
   
   );
-  this.router.navigate(['/signup'])
+  this.router.navigate(['/display'])
       // creadential dint match
     },err=>{
       alert(err.message)

@@ -19,3 +19,6 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
+export const roott = [
+  SignupComponent,LoginComponent,DisplayComponent
+]

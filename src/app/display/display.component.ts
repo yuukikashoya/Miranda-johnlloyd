@@ -1,4 +1,8 @@
+
 import { Component, OnInit } from '@angular/core';
+import {  AngularFireDatabase } from '@angular/fire/compat/database';
+import { Database} from '@angular/fire/database';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-display',
@@ -7,9 +11,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DisplayComponent implements OnInit {
 
-  constructor() { }
-
+  account!: Observable<any[]>;
+  constructor(public database: Database, private FireDb: AngularFireDatabase) {
+  this.account = FireDb.list('/accounts').valueChanges();
+   }
+   
   ngOnInit(): void {
+
+
   }
 
-}
+
+ 
+  }
