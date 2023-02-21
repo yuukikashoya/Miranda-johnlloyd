@@ -5,16 +5,16 @@
   <table class="table table-bordered table-dark">
   <thead>
     <tr>
-
+      <th scope="col">#</th>
       <th scope="col">Email</th>
       <th scope="col">name</th>
       <th scope="col">password</th>
       <th scope="col">Action</th>
     </tr>
   </thead>
-  <tbody *ngFor="let z of account | async">
+  <tbody *ngFor="let z of account | async;let i = index">
     <tr class="high" *ngIf= "z" >
-
+      <th scope="row"> {{i+1}}</th>
       <td>{{z.email}}</td>
       <td>{{z.name}}</td>
       <td>{{z.password}}</td>
