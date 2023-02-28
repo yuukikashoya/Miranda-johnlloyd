@@ -1,7 +1,7 @@
 
 import { Component, OnInit } from '@angular/core';
 import {  AngularFireDatabase } from '@angular/fire/compat/database';
-import { Database,remove,ref} from '@angular/fire/database';
+import { Database,remove,ref,update} from '@angular/fire/database';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -21,9 +21,24 @@ export class DisplayComponent implements OnInit {
 
   }
   del(value: any){
-    remove(ref(this.database, 'users/' + value));
+    remove(ref(this.database, 'accounts/' + value));
     alert('Deleted Successfully')
   }
-
+  id = "";
+name = "";
+ 
+     edit(z: any) {
+       this.id = z.id;
+      this.name = z.name;
+     }
+  
+     update(value:any){
+ 
+      update(ref(this.database, 'accounts/' + value.id), {
+         password: value.password
+       }); 
+      alert('User updated!');
+        
+    }
  
   }
