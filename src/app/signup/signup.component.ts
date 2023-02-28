@@ -23,7 +23,8 @@ export class SignupComponent implements OnInit {
       set(ref(this.database, 'accounts/' + account.uid),{
         name:value.name,
         email:value.email,
-        password:value.password
+        password:value.password,
+        id:account.uid
 
       })
       alert('account created');
