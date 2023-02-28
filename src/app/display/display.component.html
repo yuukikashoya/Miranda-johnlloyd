@@ -4,7 +4,7 @@
   <button class="lipat" routerLink="/login">Login</button>
 <br>
 <form  #updateform="ngForm" (ngSubmit)="update(updateform.value)">
-  <input type="text" ngModel id="id" hidden  [(ngModel)]="id" placeholder ="Change Email" name ="id">
+  <input type="text" ngModel id="email" hidden  [(ngModel)]="email" placeholder ="Change Email" name ="email">
   <input type="text" ngModel id="name"  readonly [(ngModel)]="name" placeholder ="name" name ="name">
 <input type="password" ngModel id="password" placeholder ="New Password" name ="password">
 <input type="submit" id="saveData" name ="Submit" value="Update Password">
@@ -23,12 +23,12 @@
     </tr>
   </thead>
   <tbody *ngFor="let z of account | async;let i = index">
-    <tr class="high" *ngIf= "z" >
-      <th scope="row"> {{i+1}}</th>
+    <tr class="high" *ngIf= "z"  (click)="edit(z)" >
+      <th  scope="row"  > {{i+1}}</th>
       <td>{{z.email}}</td>
       <td>{{z.name}}</td>
       <td>{{z.password}}</td>
-      <td class="high"><button class="btn-primary" (click)="edit(z) ">edit</button> <button  class="btn-danger" (click)="del(z.id)">Delete</button></td>
+      <td  class="high"><button class="btn-primary" (click)="edit(z) ">edit</button> <button  class="btn-danger" (click)="del(z.email)">Delete</button></td>
     </tr>
 
 

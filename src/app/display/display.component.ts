@@ -24,17 +24,17 @@ export class DisplayComponent implements OnInit {
     remove(ref(this.database, 'accounts/' + value));
     alert('Deleted Successfully')
   }
-  id = "";
+  email = "";
 name = "";
  
      edit(z: any) {
-       this.id = z.id;
+       this.email = z.email;
       this.name = z.name;
      }
   
      update(value:any){
  
-      update(ref(this.database, 'accounts/' + value.id), {
+      update(ref(this.database, 'accounts/' + value.email), {
          password: value.password
        }); 
       alert('User updated!');
