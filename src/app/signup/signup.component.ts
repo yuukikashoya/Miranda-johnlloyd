@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Auth,createUserWithEmailAndPassword,  } from '@angular/fire/auth';
+
 import { Database,set,ref } from '@angular/fire/database';
 import { Router } from '@angular/router';
 
@@ -10,35 +10,33 @@ import { Router } from '@angular/router';
 })
 export class SignupComponent implements OnInit {
 
-  constructor(public auth:Auth, public database:Database,private router:Router)  { }
+  constructor( public database:Database,private router:Router)  { }
 
   ngOnInit(): void {
   }
-
+uuid = "";
   registerUser(value:any){
-    createUserWithEmailAndPassword(this.auth, value.email, value.password)
-    .then((userCredential) => {
-      // Signed in 
-      const account = userCredential.user;
-      set(ref(this.database, 'accounts/' + account.uid),{
-        name:value.name,
-        email:value.email,
-        password:value.password,
-        id:account.uid
+    if(value.email == null || value.email == "" || value.password == null || value.password == "" 
+    ||  value.name == null || value.name == ""
+    
+    ){
+      alert('Fill the form ');
+    }
 
-      })
-      alert('account created');
-      this.router.navigate(['/login'])
-      // ...
-    })
-    .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      alert(errorMessage);
- 
       
-      // ..
-    });
+    else {
+      this.uuid = "user" +Math.floor(100000 + Math.random() * 900000);
+  set(ref(this.database, 'accounts/' + value.email), {
+      id: this.uuid,
+      email: value.email,
+      name: value.name,
+      password: value.password
+
+
+     }); 
+     alert('account created!');
+     this.router.navigate(['/login'])
+    }
   }
 
 

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Auth, signInWithEmailAndPassword  } from "@angular/fire/auth";
-import { Database,ref,update } from '@angular/fire/database';
+
+import { Database,ref,update,onValue } from '@angular/fire/database';
 import {  Router } from '@angular/router';
 
 @Component({
@@ -11,35 +11,28 @@ import {  Router } from '@angular/router';
 export class LoginComponent implements OnInit {
 
 
-  constructor(public auth: Auth,public database:Database,private router:Router) { }
-
+  constructor(public database:Database,private router:Router) { }
+  
   ngOnInit(): void {
   }
 
-  loginUser(value: any){
-    signInWithEmailAndPassword(this.auth, value.email, value.password)
-    .then((userCredential) => {
-      // Signed in 
-      const account = userCredential.user;
+  loginUser(value: any){   
+     const starCountRef = ref(this.database, 'accounts/' + value.email);
+  onValue(starCountRef, (snapshot) => {
+   const db = snapshot.val();  
 
-    alert('user login');
-  const date = new Date();
+   if (db.password == value.password){
+          const date = new Date();
+    update(ref(this.database, 'accounts/' + value.email),{
+      last_login:date
+      } );
 
-  update(ref(this.database, 'accounts/' + account.uid),{
-  last_login:date
-  }
-  
-  );
-  this.router.navigate(['/display'])
-      // creadential dint match
-    },err=>{
-      alert(err.message)
-  
-    })
-    .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-    });
+
+    this.router.navigate(['/display'])
+   }else{
+    alert('wrong credential!');
+   }
+   }); 
   
   }
 
