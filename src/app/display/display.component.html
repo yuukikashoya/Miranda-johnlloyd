@@ -6,7 +6,7 @@
 <form  #updateform="ngForm" (ngSubmit)="update(updateform.value)">
   <input type="text" ngModel id="email" hidden  [(ngModel)]="email" placeholder ="Change Email" name ="email">
   <input type="text" ngModel id="name"  readonly [(ngModel)]="name" placeholder ="name" name ="name">
-<input type="password" ngModel id="password" placeholder ="New Password" name ="password">
+<input type="password" ngModel id="password" placeholder ="New Password"  [(ngModel)]="password" name ="password">
 <input type="submit" id="saveData" name ="Submit" value="Update Password">
 </form>
   </div>
