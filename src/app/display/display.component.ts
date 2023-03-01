@@ -26,19 +26,26 @@ export class DisplayComponent implements OnInit {
   }
   email = "";
 name = "";
- 
+password = "";
      edit(z: any) {
        this.email = z.email;
       this.name = z.name;
      }
   
      update(value:any){
- 
-      update(ref(this.database, 'accounts/' + value.email), {
-         password: value.password
-       }); 
-      alert('User updated!');
-        
+
+   if(value.password == ""){
+    alert('put the new password!');
+   }else{
+    update(ref(this.database, 'accounts/' + value.email), {
+      password: value.password
+    }); 
+    this.email = "";
+    this.name = "";
+    this.password = "";
+   alert('User updated!');
+     
+   }
     }
  
   }
