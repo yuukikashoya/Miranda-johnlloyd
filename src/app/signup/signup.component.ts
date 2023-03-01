@@ -15,20 +15,24 @@ export class SignupComponent implements OnInit {
   ngOnInit(): void {
   }
 uuid = "";
+ab = "";
   registerUser(value:any){
 
     const starCountRef = ref(this.database, 'accounts/' + value.email);
     onValue(starCountRef, (snapshot) => {
      const db = snapshot.val();  
+  this.ab = db.email
+ 
+     }); 
   
-     if (db.email == value.email){
-      alert('user email already exist!');
-     }else{
-      if(value.email == null || value.email == "" || value.password == null || value.password == "" 
-      ||  value.name == null || value.name == ""
       
+     if (  value.email == null || value.email == "" || value.password == null || value.password == "" 
+      ||  value.name == null || value.name == ""
       ){
-        alert('Fill the form ');
+      alert('Fill the form ');
+     }else{
+      if(this.ab == value.email){
+       alert('user email already exist!'); 
       }
   
         
@@ -46,9 +50,6 @@ uuid = "";
        this.router.navigate(['/login'])
       }
      }
-     }); 
-    
-
   }
 
 

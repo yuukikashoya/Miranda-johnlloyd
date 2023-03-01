@@ -15,25 +15,25 @@ export class LoginComponent implements OnInit {
   
   ngOnInit(): void {
   }
-
+data = "";
   loginUser(value: any){   
      const starCountRef = ref(this.database, 'accounts/' + value.email);
   onValue(starCountRef, (snapshot) => {
    const db = snapshot.val();  
+this.data = db.password;
 
-   if (db.password == value.password){
-          const date = new Date();
-    update(ref(this.database, 'accounts/' + value.email),{
-      last_login:date
-      } );
-
-
-    this.router.navigate(['/display'])
-   }else{
-    alert('wrong credential!');
-   }
    }); 
-  
+   if (this.data == value.password){
+    const date = new Date();
+update(ref(this.database, 'accounts/' + value.email),{
+last_login:date
+} );
+
+
+this.router.navigate(['/display'])
+}else{
+alert('wrong credential!');
+}
   }
 
 }
