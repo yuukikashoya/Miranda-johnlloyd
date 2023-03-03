@@ -1,0 +1,14 @@
+<div class="container">
+<form #registerForm="ngForm" (ngSubmit)="postna(registerForm.value)">
+    <input type="text"  ngModel name="name" id="name" placeholder="Name"><br>
+    <input type="text"  ngModel name="post" id="post" placeholder="post"><br>
+    <input type="submit">
+</form>
+</div>
+
+<div class="container" *ngFor="let z of account | async;let i = index">
+    <div  *ngIf= "z">
+<h1> {{z.name}}</h1>
+<p>{{z.post}}</p>
+    </div>
+</div>

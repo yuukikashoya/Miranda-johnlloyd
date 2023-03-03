@@ -11,3 +11,6 @@ font-family: 'Numans', sans-serif;
 .middle{
     text-align: center;
 }
+.container{
+    background-color: azure;
+}

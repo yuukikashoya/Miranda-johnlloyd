@@ -14,6 +14,7 @@ import { LoginComponent } from './login/login.component';
 import { DisplayComponent } from './display/display.component';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
+import { AlaFBComponent } from './ala-fb/ala-fb.component';
 
 
 
@@ -24,6 +25,7 @@ import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
     SignupComponent,
     LoginComponent,
     DisplayComponent,
+    AlaFBComponent,
     
   ],
   imports: [
