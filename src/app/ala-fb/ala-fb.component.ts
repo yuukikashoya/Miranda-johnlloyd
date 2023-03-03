@@ -15,14 +15,19 @@ export class AlaFBComponent implements OnInit {
   ngOnInit(): void {
   }
 
+name =  sessionStorage.getItem('id');
 
+post = "";
+uuid = "";
     postna(value:any){
-
-        
-      set(ref(this.database, 'post/' + value.name), {   
+      this.uuid = "post" +Math.floor(100000 + Math.random() * 900000);
+      set(ref(this.database, 'post/' + this.uuid), {   
           name: value.name,
           post: value.post
+   
          }); 
          alert('Posted!');
+
+        this.post = "";
         }
        }

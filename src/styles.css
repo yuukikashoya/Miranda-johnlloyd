@@ -11,6 +11,9 @@ font-family: 'Numans', sans-serif;
 .middle{
     text-align: center;
 }
-.container{
-    background-color: azure;
+
+hr{
+    height: 1px;
+    background-color: #ccc;
+    border: none;
 }

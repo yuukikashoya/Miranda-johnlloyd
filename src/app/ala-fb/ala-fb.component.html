@@ -1,14 +1,19 @@
+<button class="lipat" routerLink="/signup">Sign Up</button>
+<button class="lipat" routerLink="/display">user table</button>
+<button class="lipat" routerLink="/login">Login</button>
 <div class="container">
-<form #registerForm="ngForm" (ngSubmit)="postna(registerForm.value)">
-    <input type="text"  ngModel name="name" id="name" placeholder="Name"><br>
-    <input type="text"  ngModel name="post" id="post" placeholder="post"><br>
+<form #registerForm="ngForm" class="center" (ngSubmit)="postna(registerForm.value)">
+    <p style="color: aliceblue;">to put a name you need to a login first</p>
+    <input type="text" style="text-align: center;font-weight: bold;font-size: 2em;" [(ngModel)]="name" readonly ngModel name="name"  class="headinput" id="name" placeholder="Name"><br>
+    <textarea type="text" class="textarea" ngModel [(ngModel)]="post" name="post" id="post" placeholder="post"></textarea><br>
     <input type="submit">
 </form>
 </div>
 
 <div class="container" *ngFor="let z of account | async;let i = index">
-    <div  *ngIf= "z">
-<h1> {{z.name}}</h1>
+    <div class="jumboron bg-dark text-white center" *ngIf= "z">
+<h1><b> {{z.name}}</b></h1>
 <p>{{z.post}}</p>
+<hr>
     </div>
 </div>
