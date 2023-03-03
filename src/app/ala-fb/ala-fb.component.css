@@ -1,0 +1,13 @@
+.center{
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom:10px;
+    font-family:'Times New Roman', Times, serif ;
+}
+.textarea {
+    border: 1px #ddd solid;
+    width: 400px;
+    height: 120px;
+    font: 9pt Consolas;
+    width: 100%;
+}

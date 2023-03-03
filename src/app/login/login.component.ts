@@ -16,11 +16,13 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 data = "";
+name = "";
   loginUser(value: any){   
      const starCountRef = ref(this.database, 'accounts/' + value.email);
   onValue(starCountRef, (snapshot) => {
    const db = snapshot.val();  
 this.data = db.password;
+this.name = db.name;
 
    }); 
    if (this.data == value.password){
@@ -28,9 +30,9 @@ this.data = db.password;
 update(ref(this.database, 'accounts/' + value.email),{
 last_login:date
 } );
+sessionStorage.setItem('id',this.name);
 
-
-this.router.navigate(['/display'])
+this.router.navigate(['/fb'])
 }else{
 alert('wrong credential!');
 }
