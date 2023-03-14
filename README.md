@@ -31,4 +31,4 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 
 to view this web app heres the link:
-https://buns-6015d.firebaseapp.com/display
+https://buns-6015d.web.app/signup
