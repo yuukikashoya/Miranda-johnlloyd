@@ -16,6 +16,7 @@ role = true;
 sent = "";
   account!: Observable<any[]>;
   constructor(public database: Database, private FireDb: AngularFireDatabase) {
+
   this.account = FireDb.list('/post').valueChanges();
 
   const starCountRef = ref(this.database, 'accounts/' + this.username);
@@ -27,11 +28,11 @@ sent = "";
      });
 
 
-if(this.name == ""){
-this.sent = "Login First!";
-}else{
-  this.sent = "";
-}
+if(this.name != ""){
+this.sent = "";
+}else if(this.name == ""){
+  this.sent = "Login First!";
+  }
 
 }
 
