@@ -3,7 +3,7 @@
 <button class="lipat" routerLink="/login">Login</button>
 <div class="container">
 <form #registerForm="ngForm" class="center" (ngSubmit)="postna(registerForm.value)">
-    <p style="color: aliceblue;">to put a name you need to a login first</p>
+    <h1 style="color: aliceblue;"> {{this.sent}}</h1>
     <input type="text" style="text-align: center;font-weight: bold;font-size: 2em;" [(ngModel)]="name" readonly ngModel name="name"  class="headinput" id="name" placeholder="Name"><br>
     <textarea type="text" class="textarea" ngModel [(ngModel)]="post" name="post" id="post" placeholder="post"></textarea><br>
     <input type="submit">
@@ -11,7 +11,7 @@
 </div>
 
 <div class="container" *ngFor="let z of account | async;let i = index">
-    <div class="jumboron bg-dark text-white center" *ngIf= "z">
+    <div class="jumboron bg-dark text-white center"  [hidden]="role">
 <h1><b> {{z.name}}</b></h1>
 <p>{{z.post}}</p>
 <hr>

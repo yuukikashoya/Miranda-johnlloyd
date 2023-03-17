@@ -14,18 +14,15 @@
 					</a>
 			<div class="card-header">
 				<h3>Sign Up</h3>	
-				<div class="d-flex justify-content-end social_icon">
-					<span><i class="fab fa-facebook-square"></i></span>
-					<span><i class="fab fa-google-plus-square"></i></span>
-					<span><i class="fab fa-twitter-square"></i></span>
-				</div>
+
 			</div>
 			
 			<div class="card-body">
                 <form #registerForm="ngForm" (ngSubmit)="registerUser(registerForm.value)" style="border:1px solid rgb(168, 161, 101)">
 					<div class="input-group form-group">
 						<div class="input-group-prepend">
-							<span class="input-group-text"><i class="fas fa-user"></i></span>
+							<span class="input-group-text"><i class="
+								fab fa-google"></i></span>
 						</div>
 						<input type="text" class="form-control"  ngModel name="email" id="email" placeholder="Email">
 						
@@ -40,14 +37,27 @@
 					<div class="input-group form-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text"><i class="fas fa-key"></i></span>
+							
 						</div>
 						<input type="password" class="form-control" ngModel name="password" id="password" placeholder="Password">
+						  
 					</div>
-					<div class="row align-items-center remember">
+					<div class="input-group form-group ">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><i class="fas fa-book-open"></i></span>
+							
 					
+						<select #roles name="eme"  [(ngModel)]="set"  >
+							<option disabled selected value default> -- select an option -- </option>
+							<option value="ban">Ban</option>
+							<option value="allow">Allow</option>
+
+						  </select>	
+					
+						</div>
 					</div>
 					<div class="form-group">
-						<input type="submit" value="Sign Up" name="signup_submit" id="saveData" class="btn float-right login_btn">
+						<input type="submit"  value="Sign Up" name="signup_submit" id="saveData" class="btn float-right login_btn">
                        
 					</div>
 

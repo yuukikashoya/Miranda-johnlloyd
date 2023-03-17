@@ -30,7 +30,7 @@ this.name = db.name;
 update(ref(this.database, 'accounts/' + value.email),{
 last_login:date
 } );
-sessionStorage.setItem('id',this.name);
+sessionStorage.setItem('id',value.email);
 
 this.router.navigate(['/fb'])
 }else{

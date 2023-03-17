@@ -8,14 +8,40 @@ import { Database,remove,ref,update, onValue, set} from '@angular/fire/database'
   styleUrls: ['./ala-fb.component.css']
 })
 export class AlaFBComponent implements OnInit {
+ username =  sessionStorage.getItem('id');
+ data = "";
+name = "";
+check = "";
+role = true;
+sent = "";
   account!: Observable<any[]>;
   constructor(public database: Database, private FireDb: AngularFireDatabase) {
-  this.account = FireDb.list('/post').valueChanges();}
+  this.account = FireDb.list('/post').valueChanges();
+
+  const starCountRef = ref(this.database, 'accounts/' + this.username);
+    onValue(starCountRef, (snapshot) => {
+     const db = snapshot.val();  
+  this.name = db.name;
+  this.role = db.user;
+  
+     });
+
+
+if(this.name == ""){
+this.sent = "Login First!";
+}else{
+  this.sent = "";
+}
+
+}
 
   ngOnInit(): void {
+   
+  
+    
   }
 
-name =  sessionStorage.getItem('id');
+
 
 post = "";
 uuid = "";
