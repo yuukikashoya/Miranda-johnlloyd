@@ -13,7 +13,7 @@ export class AlaFBComponent implements OnInit {
 name = "";
 check = "";
 role = true;
-sent = "";
+sent = true;
   account!: Observable<any[]>;
   constructor(public database: Database, private FireDb: AngularFireDatabase) {
 
@@ -29,9 +29,9 @@ sent = "";
 
 
 if(this.name != ""){
-this.sent = "";
+this.sent = true;
 }else if(this.name == ""){
-  this.sent = "Login First!";
+  this.sent = false;
   }
 
 }
@@ -50,11 +50,17 @@ uuid = "";
       this.uuid = "post" +Math.floor(100000 + Math.random() * 900000);
       set(ref(this.database, 'post/' + this.uuid), {   
           name: value.name,
-          post: value.post
+          post: value.post,
+          id: this.uuid
    
          }); 
          alert('Posted!');
 
         this.post = "";
+        }
+
+        del(value: any){
+          remove(ref(this.database, 'post/' + value));
+          alert('Deleted Successfully')
         }
        }

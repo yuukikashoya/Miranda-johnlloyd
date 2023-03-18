@@ -24,6 +24,7 @@ export class DisplayComponent implements OnInit {
     remove(ref(this.database, 'accounts/' + value));
     alert('Deleted Successfully')
   }
+  session =  sessionStorage.getItem('id');
   email = "";
 name = "";
 password = "";

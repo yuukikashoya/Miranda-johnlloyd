@@ -2,7 +2,9 @@
     text-align: center;
     padding-top: 10px;
     padding-bottom:10px;
-    font-family:'Times New Roman', Times, serif ;
+    font-size: 1em;
+
+
 }
 .textarea {
     border: 1px #ddd solid;
@@ -11,3 +13,22 @@
     font: 9pt Consolas;
     width: 100%;
 }
+.right {
+    float: right;
+}
+.a4{
+    padding-top: 10px;
+    padding-right: 10px;
+    padding-left: 50px;
+}
+.cross{
+    cursor: pointer;;
+}
+.avatar {
+    vertical-align: middle;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    float: left;
+    background-color: azure;
+  }
