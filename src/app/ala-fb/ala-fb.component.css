@@ -20,10 +20,17 @@
     padding-top: 10px;
     padding-right: 10px;
     padding-left: 50px;
+    cursor: pointer;
 }
 .cross{
-    cursor: pointer;;
+    cursor: pointer;
+    opacity: 0.5;
+  
 }
+.cross:hover {
+    opacity: 3;
+  }
+
 .avatar {
     vertical-align: middle;
     width: 40px;
@@ -31,4 +38,5 @@
     border-radius: 50%;
     float: left;
     background-color: azure;
+    cursor: pointer;
   }
