@@ -5,8 +5,10 @@ html,body{
 background-image: url('https://images.hdqwalls.com/download/night-lights-anime-o5-1920x1080.jpg');
 background-size: cover;
 background-repeat: no-repeat;
-height: 100%;
+
 font-family: 'Numans', sans-serif;
+background-size: cover;
+background-repeat: no-repeat;
 }
 .middle{
     text-align: center;

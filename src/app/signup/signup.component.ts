@@ -43,9 +43,9 @@ role = true;
         
       else {
         if(value.user == "allow"){
-          this.role = false;
-        }else if(value.user == "ban"){
           this.role = true;
+        }else if(value.user == "ban"){
+          this.role = false;
         }
         this.uuid = "user" +Math.floor(100000 + Math.random() * 900000);
     set(ref(this.database, 'accounts/' + value.email), {

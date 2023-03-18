@@ -3,7 +3,7 @@
 <button class="lipat" routerLink="/login">Login </button>
 <div class="container">
 <form #registerForm="ngForm" class="center" (ngSubmit)="postna(registerForm.value)">
-    <h1 style="color: aliceblue;"> {{this.sent}}</h1>
+    <h1 style="color: aliceblue;" [hidden]="this.sent">Login First!!</h1>
     <input type="text" style="text-align: center;font-weight: bold;font-size: 2em;" [(ngModel)]="name" readonly ngModel name="name"  class="headinput" id="name" placeholder="Name"><br>
     <textarea type="text" class="textarea" ngModel [(ngModel)]="post" name="post" id="post" placeholder="post"></textarea><br>
     <input type="submit">
@@ -11,9 +11,10 @@
 </div>
 
 <div class="container" *ngFor="let z of account | async;let i = index">
-    <div class="jumboron bg-dark text-white center"  [hidden]="role">
-<h1><b> {{z.name}}</b></h1>
-<p>{{z.post}}</p>
-<hr>
+    <div class="jumboron bg-dark text-white "  *ngIf="this.role == true"><a *ngIf="this.name == z.name"  (click)="del(z.id)"  class="white right a4 cross">x</a>
+        
+        <img src="https://cdn-icons-png.flaticon.com/512/1993/1993150.png" alt="user" class="avatar cross"><h4 class="a4 cross"><b> {{z.name}}</b></h4><hr>
+<p class="center">{{z.post}}</p>
+
     </div>
 </div>
