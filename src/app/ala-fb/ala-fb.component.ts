@@ -14,6 +14,7 @@ name = "";
 check = "";
 role = true;
 sent = true;
+admin = false;
   account!: Observable<any[]>;
   constructor(public database: Database, private FireDb: AngularFireDatabase) {
 
@@ -24,6 +25,7 @@ sent = true;
      const db = snapshot.val();  
   this.name = db.name;
   this.role = db.user;
+  this.admin = db.admin;
   
      });
 

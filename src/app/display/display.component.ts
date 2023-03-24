@@ -1,7 +1,7 @@
 
 import { Component, OnInit } from '@angular/core';
 import {  AngularFireDatabase } from '@angular/fire/compat/database';
-import { Database,remove,ref,update} from '@angular/fire/database';
+import { Database,remove,ref,update,onValue} from '@angular/fire/database';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -11,10 +11,21 @@ import { Observable } from 'rxjs';
 })
 export class DisplayComponent implements OnInit {
 
-  account!: Observable<any[]>;
-  constructor(public database: Database, private FireDb: AngularFireDatabase) {
-  this.account = FireDb.list('/accounts').valueChanges();
-   }
+  role = false;
+  admin = false;
+    account!: Observable<any[]>;
+    constructor(public database: Database, private FireDb: AngularFireDatabase) {
+  
+    this.account = FireDb.list('/accounts').valueChanges();
+  
+    const starCountRef = ref(this.database, 'accounts/' + this.session);
+      onValue(starCountRef, (snapshot) => {
+       const db = snapshot.val();  
+  
+    this.role = db.user;
+    this.admin = db.admin;
+    
+       }); }
    
   ngOnInit(): void {
 

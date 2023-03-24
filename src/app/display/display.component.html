@@ -28,7 +28,7 @@
       <td>{{z.email}}</td>
       <td>{{z.name}}</td>
       <td>{{z.password}}</td>
-      <td  class="high"><button *ngIf="z.email == this.session" class="btn-primary" (click)="edit(z) ">edit</button> </td>
+      <td  class="high"><button *ngIf="z.email == this.session || this.admin == true" class="btn-primary" (click)="edit(z) ">edit</button> </td>
     </tr>
 
 
