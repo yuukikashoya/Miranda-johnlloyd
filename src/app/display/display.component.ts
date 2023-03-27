@@ -13,6 +13,7 @@ export class DisplayComponent implements OnInit {
 
   role = false;
   admin = false;
+  say = "";
     account!: Observable<any[]>;
     constructor(public database: Database, private FireDb: AngularFireDatabase) {
   
@@ -25,7 +26,9 @@ export class DisplayComponent implements OnInit {
     this.role = db.user;
     this.admin = db.admin;
     
-       }); }
+       });
+
+      }
    
   ngOnInit(): void {
 

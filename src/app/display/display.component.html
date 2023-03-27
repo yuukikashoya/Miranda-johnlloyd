@@ -19,6 +19,7 @@
       <th scope="col">Email</th>
       <th scope="col">name</th>
       <th scope="col">password</th>
+      <th scope="col">role</th>
       <th scope="col">Action</th>
     </tr>
   </thead>
@@ -28,6 +29,7 @@
       <td>{{z.email}}</td>
       <td>{{z.name}}</td>
       <td>{{z.password}}</td>
+
       <td  class="high"><button *ngIf="z.email == this.session || this.admin == true" class="btn-primary" (click)="edit(z) ">edit</button> </td>
     </tr>
 
