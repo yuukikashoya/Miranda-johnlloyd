@@ -7,7 +7,7 @@
     <h1 style="color: aliceblue;" *ngIf="this.name == ''">Login First!!</h1>
   
     <input  type="text"  *ngIf="this.name != ''" style="text-align: center;font-weight: bold;font-size: 1.5em; border-radius: 30px;" [(ngModel)]="name" readonly ngModel name="name"  class="headinput" id="name" placeholder="Name"><br>
-    <textarea type="text"  autocomplete="off" *ngIf="this.name != ''" class="textarea" style="border-radius: 10px; font-size: 1em;"     ngModel [(ngModel)]="post" name="post" id="post" placeholder="post"></textarea><br>
+    <textarea type="text"  autocomplete="off" *ngIf="this.name != ''" class="textarea" style="border-radius: 10px; font-size: 1em;"     ngModel  name="post" id="post" placeholder="post"></textarea><br>
     <input  class="bg-primary text-white kick" *ngIf="this.name != ''" type="submit" value="Post">
 </form>
 </div>
@@ -50,7 +50,7 @@
                         <form #comment="ngForm" class="comment-input" (ngSubmit)="comm(comment.value)" >
                           <input type="text" [(ngModel)]="z.id" hidden id="id" name="id" ngModel>
                             <input type="text" hidden *ngIf="this.name != ''" style="text-align: center;font-weight: bold;font-size: 2em;" [(ngModel)]="name" readonly ngModel name="name"  class="headinput" id="name" placeholder="Name"><br>
-                            <input type="text"  *ngIf="this.name != ''" class="form-control" ngModel [(ngModel)]="post" name="post" id="post" placeholder="Comment......."><br>
+                            <input type="text"  *ngIf="this.name != ''" class="form-control" ngModel  name="post" id="post" placeholder="Comment......."><br>
                             <input   *ngIf="this.name != ''" type="submit" value="comment">
                         </form>
                     </div>
