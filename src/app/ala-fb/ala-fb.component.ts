@@ -13,7 +13,7 @@ export class AlaFBComponent implements OnInit {
 name = "";
 check = "";
 role = true;
-sent = true;
+
 admin = false;
   account!: Observable<any[]>;
   constructor(public database: Database, private FireDb: AngularFireDatabase) {
@@ -30,11 +30,7 @@ admin = false;
      });
 
 
-if(this.name != ""){
-this.sent = true;
-}else if(this.name == ""){
-  this.sent = false;
-  }
+
 
 }
 
@@ -48,12 +44,14 @@ this.sent = true;
 
 post = "";
 uuid = "";
+
     postna(value:any){
       this.uuid = "post" +Math.floor(100000 + Math.random() * 900000);
       set(ref(this.database, 'post/' + this.uuid), {   
           name: value.name,
           post: value.post,
-          id: this.uuid
+          id: this.uuid,
+          rank: this.admin
    
          }); 
          alert('Posted!');

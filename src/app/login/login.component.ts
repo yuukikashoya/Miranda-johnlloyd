@@ -18,6 +18,11 @@ export class LoginComponent implements OnInit {
 data = "";
 name = "";
   loginUser(value: any){   
+    if (  value.email == null || value.email == "" || value.password == null || value.password == "" 
+   
+    ){
+      alert('Fill the form ');
+     }else{
      const starCountRef = ref(this.database, 'accounts/' + value.email);
   onValue(starCountRef, (snapshot) => {
    const db = snapshot.val();  
@@ -36,6 +41,6 @@ this.router.navigate(['/fb'])
 }else{
 alert('wrong credential!');
 }
-  }
+  }}
 
 }
