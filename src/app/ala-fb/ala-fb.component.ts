@@ -16,9 +16,11 @@ role = true;
 
 admin = false;
   account!: Observable<any[]>;
+  comments!: Observable<any[]>;
   constructor(public database: Database, private FireDb: AngularFireDatabase) {
 
   this.account = FireDb.list('/post').valueChanges();
+  this.comments = FireDb.list('/comment').valueChanges();
 
   const starCountRef = ref(this.database, 'accounts/' + this.username);
     onValue(starCountRef, (snapshot) => {
@@ -63,4 +65,25 @@ uuid = "";
           remove(ref(this.database, 'post/' + value));
           alert('Deleted Successfully')
         }
+com= "";
+cid="";
+
+        comm(value: any){
+
+          this.cid = "comment" +Math.floor(100000 + Math.random() * 900000);
+      set(ref(this.database, "comment/" + this.cid), {   
+          name: value.name,
+          comment: value.post,
+          id: this.cid,
+          rank: this.admin,
+          postid: value.id
+   
+         }); 
+         alert('commented!');
+
+        this.post = "";
+
+        }
+
+
        }

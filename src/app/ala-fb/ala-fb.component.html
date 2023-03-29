@@ -39,16 +39,16 @@
                     </div>
                     <hr>
                     <div class="comments">
-                        <div class="d-flex flex-row mb-2" *ngFor="let z of account | async;let qa = index">  <img src="https://cdn-icons-png.flaticon.com/512/1993/1993150.png" alt="user" class="avatar ">
-                            <div class="d-flex flex-column ml-2"> <span class="name font-weight-bold text-primary hand">{{z.name}}</span> <small class="comment-text">{{z.post}}</small>
+                        <div class="d-flex flex-row mb-2" *ngFor="let y of comments | async;let qa = index"><span  *ngIf="z.id == y.postid">  <img src="https://cdn-icons-png.flaticon.com/512/1993/1993150.png" alt="user" class="avatar ">
+                            <div class="d-flex flex-column ml-2"> <span class="name font-weight-bold text-primary hand">{{y.name}}</span> <small class="comment-text">{{y.comment}}</small>
                                 <div class="d-flex flex-row align-items-center status"> <small>data and time</small></div>
                                 <div hidden>{{qa + 1}}</div>
-                            </div>
+                            </div></span>
                         </div>
 
                     
-                        <form #registerForm="ngForm" class="comment-input" (ngSubmit)="postna(registerForm.value)">
-                          
+                        <form #comment="ngForm" class="comment-input" (ngSubmit)="comm(comment.value)" >
+                          <input type="text" [(ngModel)]="z.id" hidden id="id" name="id" ngModel>
                             <input type="text" hidden *ngIf="this.name != ''" style="text-align: center;font-weight: bold;font-size: 2em;" [(ngModel)]="name" readonly ngModel name="name"  class="headinput" id="name" placeholder="Name"><br>
                             <input type="text"  *ngIf="this.name != ''" class="form-control" ngModel [(ngModel)]="post" name="post" id="post" placeholder="Comment......."><br>
                             <input   *ngIf="this.name != ''" type="submit" value="comment">
