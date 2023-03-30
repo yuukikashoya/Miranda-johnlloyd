@@ -52,3 +52,19 @@
     float: right;
     border-radius: 10px;
   }
+  small {
+    padding-left: 15px;
+  }
+  .ox{
+   color:red;
+   cursor:pointer
+  }
+  .logo{
+
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    float: left;
+    background-color: azure;
+    cursor: pointer;
+  }

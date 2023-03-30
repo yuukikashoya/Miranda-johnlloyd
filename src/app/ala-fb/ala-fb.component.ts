@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import {  AngularFireDatabase } from '@angular/fire/compat/database';
 import { Database,remove,ref,update, onValue, set} from '@angular/fire/database';
+
 @Component({
   selector: 'app-ala-fb',
   templateUrl: './ala-fb.component.html',
@@ -13,8 +14,12 @@ export class AlaFBComponent implements OnInit {
 name = "";
 check = "";
 role = true;
-
+date = new Date()
 admin = false;
+com= "";
+cid="";
+post = "";
+uuid = "";
   account!: Observable<any[]>;
   comments!: Observable<any[]>;
   constructor(public database: Database, private FireDb: AngularFireDatabase) {
@@ -30,12 +35,7 @@ admin = false;
   this.admin = db.admin;
   
      });
-
-
-
-
 }
-
   ngOnInit(): void {
    
   
@@ -43,21 +43,19 @@ admin = false;
   }
 
 
-
-post = "";
-uuid = "";
-
     postna(value:any){
       this.uuid = "post" +Math.floor(100000 + Math.random() * 900000);
       set(ref(this.database, 'post/' + this.uuid), {   
           name: value.name,
           post: value.post,
           id: this.uuid,
-          rank: this.admin
+          rank: this.admin,
+          date:this.date
    
          }); 
+         value.reset()
          alert('Posted!');
-
+         
         this.post = "";
         }
 
@@ -65,8 +63,6 @@ uuid = "";
           remove(ref(this.database, 'post/' + value));
           alert('Deleted Successfully')
         }
-com= "";
-cid="";
 
         comm(value: any){
 
@@ -76,14 +72,19 @@ cid="";
           comment: value.post,
           id: this.cid,
           rank: this.admin,
-          postid: value.id
-   
+          postid: value.id,       
+          date:this.date
          }); 
          alert('commented!');
 
         this.post = "";
 
         }
-
+       
+        delcomment(value: any){
+   
+           remove(ref(this.database, 'comment/' + value));
+           alert('Deleted Successfully')
+        }
 
        }
