@@ -1,19 +1,78 @@
 <button class="lipat" routerLink="/signup">Sign Up</button>
 <button class="lipat" routerLink="/display">user table</button>
-<button class="lipat" routerLink="/login">Login</button>
+<button class="lipat" routerLink="/login">Login </button>
 <div class="container">
-<form #registerForm="ngForm" class="center" (ngSubmit)="postna(registerForm.value)">
-    <h1 style="color: aliceblue;"> {{this.sent}}</h1>
-    <input type="text" style="text-align: center;font-weight: bold;font-size: 2em;" [(ngModel)]="name" readonly ngModel name="name"  class="headinput" id="name" placeholder="Name"><br>
-    <textarea type="text" class="textarea" ngModel [(ngModel)]="post" name="post" id="post" placeholder="post"></textarea><br>
-    <input type="submit">
+<form #registerForm="ngForm" class="center"  (ngSubmit)="postna(registerForm.value)">
+   
+    <h1 style="color: aliceblue;" *ngIf="this.name == ''">Login First!!</h1>
+  
+    <input  type="text"  *ngIf="this.name != ''" style="text-align: center;font-weight: bold;font-size: 1.5em; border-radius: 30px;" [(ngModel)]="name" readonly ngModel name="name"  class="headinput" id="name" placeholder="Name"><br>
+    <textarea type="text"  autocomplete="off" *ngIf="this.name != ''" class="textarea" style="border-radius: 10px; font-size: 1em;"     ngModel  name="post" id="post" placeholder="post"></textarea><br>
+    <input  class="bg-primary text-white kick" *ngIf="this.name != ''" type="submit" value="Post">
 </form>
 </div>
 
-<div class="container" *ngFor="let z of account | async;let i = index">
-    <div class="jumboron bg-dark text-white center"  [hidden]="role">
-<h1><b> {{z.name}}</b></h1>
-<p>{{z.post}}</p>
-<hr>
+<div class="container mt-5 mb-5" *ngFor="let z of account | async;let i = index">
+    <div class="row d-flex align-items-center justify-content-center"  *ngIf="this.role == true || this.admin == true">
+  
+
+            <div class="card">
+                <div class="d-flex justify-content-between p-2 px-3">
+                    <div class="d-flex flex-row align-items-center">  
+                               <img *ngIf="z.rank == true" src="https://cdn-icons-png.flaticon.com/512/6024/6024190.png" alt="rank" class="avatar ">
+                        <img *ngIf="z.rank != true" src="https://cdn-icons-png.flaticon.com/512/1993/1993150.png" alt="Profile" class="avatar ">
+                        <div class="d-flex flex-column ml-2"> <span class="font-weight-bold text-primary hand">{{z.name}} </span>
+                            <small>{{z.date  | date:'h:mma dd-MMMM-yyyy' }} </small>
+                             </div>
+                    </div>
+                    <a *ngIf="this.name == z.name || this.admin == true"  (click)="del(z.id)"  class="white right a4 cross">❌</a>
+                </div> 
+                <div class="p-2">
+                    <p class="text-justify">{{z.post}}</p>
+                    <hr>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="d-flex flex-row icons d-flex align-items-center"> <i class="fa fa-heart"></i> <i class="fa fa-smile-o ml-2"></i> </div>
+                        <div class="d-flex flex-row muted-color"> <span> <button id="btn" (click)="getComment(z.id)">Comments</button></span> </div>
+                    </div>
+                    <hr>
+                    <div class="comments">
+                        <div class="d-flex flex-row mb-2" *ngFor="let y of comments | async;let qa = index"><span  *ngIf="z.id == y.postid">          <img *ngIf="y.rank == true" src="https://cdn-icons-png.flaticon.com/512/6024/6024190.png" alt="admin" class="avatar ">
+                            <img *ngIf="y.rank != true" src="https://cdn-icons-png.flaticon.com/512/1993/1993150.png" alt="user" class="avatar ">
+                            <div class="d-flex flex-column ml-2"> <span class="name font-weight-bold text-primary hand">{{y.name}}</span> <small class="comment-text">{{y.comment}}</small>
+                                <div class="d-flex flex-row align-items-center status">  <small style="font-size: 10px;"> <button id="btn" (click)="getReply(y.id)">Reply</button></small><small class="ox" *ngIf="this.name == y.name || this.admin == true" 
+                                     (click)="delcomment(y.id)" style="font-size: 10px;" >Delete</small></div>
+
+
+
+                                     <div class="d-flex flex-row mb-2" *ngFor="let x of reply | async;let qa = index"><span  *ngIf="z.id == y.postid && y.id == x.commentid">          <img *ngIf="x.rank == true" src="https://cdn-icons-png.flaticon.com/512/6024/6024190.png" alt="admin" class="avatar ">
+                                        <img *ngIf="x.rank != true" src="https://cdn-icons-png.flaticon.com/512/1993/1993150.png" alt="user" class="avatar ">
+                                        <div class="d-flex flex-column ml-2"> <span class="name font-weight-bold text-primary hand">{{x.name}}</span> <small class="comment-text">{{x.reply}}</small>
+                                            <div class="d-flex flex-row align-items-center status"><small class="ox" *ngIf="this.name == x.name || this.admin == true" 
+                                                 (click)="delreply(x.id)" style="font-size: 10px;" >Delete</small></div>
+                                            <div hidden>{{qa + 1}}</div>
+                                        </div></span>
+                                    </div>
+                                <div hidden>{{qa + 1}}</div>
+                            </div></span>
+                        </div>
+
+                    <!-- comment form -->
+                        <form #comment="ngForm" *ngIf="this.modeC == true" class="comment-input" (ngSubmit)="comm(comment.value)" >
+                          <input type="text" [(ngModel)]="z.id" hidden id="id" name="id" ngModel>
+                            <input type="text" hidden *ngIf="this.name != ''" style="text-align: center;font-weight: bold;font-size: 2em;" [(ngModel)]="name" readonly ngModel name="name"  class="headinput" id="name" placeholder="Name"><br>
+                            <input type="text"  *ngIf="this.name != ''" class="form-control" ngModel  name="post" id="post" placeholder="Comment......."><br>
+                            <input   *ngIf="this.name != ''" type="submit" value="comment">
+                        </form>
+    <!-- reply form -->
+                        <form #reply="ngForm" *ngIf="this.modeR == true" class="comment-input" (ngSubmit)="rep(reply.value)" >
+
+                              <input type="text" hidden *ngIf="this.name != ''" style="text-align: center;font-weight: bold;font-size: 2em;" [(ngModel)]="name" readonly ngModel name="name"  class="headinput" id="name" placeholder="Name"><br>
+                              <input type="text"  *ngIf="this.name != ''" class="form-control" ngModel  name="post" id="post" placeholder="Reply......."><br>
+                              <input   *ngIf="this.name != ''" type="submit" value="reply">
+                          </form>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-</div>
+
