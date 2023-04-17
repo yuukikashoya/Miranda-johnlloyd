@@ -9,6 +9,9 @@ import { Database,remove,ref,update, onValue, set} from '@angular/fire/database'
   styleUrls: ['./ala-fb.component.css']
 })
 export class AlaFBComponent implements OnInit {
+  delay(ms: number) {
+    return new Promise( resolve => setTimeout(resolve, ms) );
+  }
  username =  sessionStorage.getItem('id');
  data = "";
 name = "";
@@ -20,8 +23,13 @@ com= "";
 cid="";
 post = "";
 uuid = "";
+currentpost=""
+currentcomment="";
+modeC=false;
+modeR=false;
   account!: Observable<any[]>;
   comments!: Observable<any[]>;
+  reply!: Observable<any[]>;
   constructor(public database: Database, private FireDb: AngularFireDatabase) {
 
   this.account = FireDb.list('/post').valueChanges();
@@ -59,10 +67,7 @@ uuid = "";
         this.post = "";
         }
 
-        del(value: any){
-          remove(ref(this.database, 'post/' + value));
-          alert('Deleted Successfully')
-        }
+
 
         comm(value: any){
 
@@ -80,17 +85,54 @@ uuid = "";
         this.post = "";
 
         }
-       
+        rep(reply:any){
+          this.cid = "reply" +Math.floor(100000 + Math.random() * 900000);
+          set(ref(this.database, 'post/'+this.currentpost+'/comment/ '+this.currentcomment+'/reply/'+ this.cid), {   
+              name: reply.name,
+              reply: reply.post,
+              id: this.cid,
+              rank: this.admin,
+              postid: this.currentpost,
+              commentid: this.currentcomment,         
+              date:this.date
+             }); 
+             alert('commented!');
+    
+            this.post = "";
+            this.modeC=true;
+            this.modeR=false;
+
+        }
+               del(value: any){
+          remove(ref(this.database, 'post/' + value));
+          alert('Deleted Successfully')
+        }
         delcomment(value: any){
             remove(ref(this.database, '/post/'+this.currentpost+'/comment/'+ value));
            alert('Deleted Successfully')
         }
+        delreply(value: any){
+          remove(ref(this.database, '/post/'+this.currentpost+'/comment/ '+ this.currentcomment+'/reply/'+ value));
+         alert('Deleted Successfully')
+      }
 
-currentpost=""
-        getComment(comment:any){
-           this.comments = this.FireDb.list('/post/'+comment+'/comment/').valueChanges();
-           this.currentpost=comment
+
+        getComment(post:any){
+           this.comments = this.FireDb.list('/post/'+post+'/comment/').valueChanges();
+           this.currentpost=post;
+           this.modeC=true;
+           this.modeR=false;
+           
         }
+       getReply(reply:any){
+     
+           this.reply = this.FireDb.list('/post/'+this.currentpost+'/comment/ '+reply+'/reply/').valueChanges();
+    
+           this.currentcomment=reply  
+          this.modeR=true;
+          this.modeC=false;
+          
+       }
 
 
 
