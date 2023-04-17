@@ -10,14 +10,16 @@ import {  Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-
+  delay(ms: number) {
+    return new Promise( resolve => setTimeout(resolve, ms) );
+  }
   constructor(public database:Database,private router:Router) { }
   
   ngOnInit(): void {
   }
 data = "";
 name = "";
-  loginUser(value: any){   
+  async loginUser(value: any){   
     if (  value.email == null || value.email == "" || value.password == null || value.password == "" 
    
     ){
@@ -30,6 +32,7 @@ this.data = db.password;
 this.name = db.name;
 
    }); 
+   await this.delay(1000);
    if (this.data == value.password){
     const date = new Date();
 update(ref(this.database, 'accounts/' + value.email),{
