@@ -68,3 +68,7 @@
     background-color: azure;
     cursor: pointer;
   }
+  #btn{
+    border: none;
+    background: none;
+  }
