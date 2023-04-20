@@ -93,7 +93,7 @@ modeR=false;
           postid: value.id,       
           date:this.date
          }); 
-         alert('commented!');
+
 
         this.post = "";
 
@@ -110,7 +110,7 @@ modeR=false;
               commentid: this.currentcomment,         
               date:this.date
              }); 
-             alert('commented!');
+
     
             this.post = "";
             this.modeC=true;
@@ -120,17 +120,17 @@ modeR=false;
         //delete 
                del(value: any){
           remove(ref(this.database, 'post/' + value));
-          alert('Deleted Successfully')
+          alert('Post Deleted')
         }
         //delete comment
         delcomment(value: any){
             remove(ref(this.database, '/post/'+this.currentpost+'/comment/'+ value));
-           alert('Deleted Successfully')
+
         }
         //delete reply
         delreply(value: any){
           remove(ref(this.database, '/post/'+this.currentpost+'/comment/ '+ this.currentcomment+'/reply/'+ value));
-         alert('Deleted Successfully')
+
       }
 
 //diplay comment
