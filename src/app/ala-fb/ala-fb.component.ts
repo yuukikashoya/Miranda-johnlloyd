@@ -159,7 +159,7 @@ modeR=false;
           
        }
 
-
+//liking a post
         like(value:any){
            if(value == 0 || value == undefined || value == null){
            update(ref(this.database, 'post/' + this.currentpost),{
@@ -177,5 +177,14 @@ modeR=false;
              name: this.username
             }); 
        }
+    }
+    //unliking a post
+    unlike(value:any){
+      remove(ref(this.database, '/post/'+ this.currentpost +'/like/'+ this.username));
+      this.likecounter = value - 1;
+      update(ref(this.database, 'post/' + this.currentpost),{
+        likes:this.likecounter
+        } );
+        this.likers=""
     }
 }
