@@ -20,6 +20,9 @@ post = "";
 role = true;
 date = new Date()
 admin = false;
+//name of liker and counter
+likers = "";
+likecounter = 0;
 //uniqe ids
 cid="";
 uuid = "";
@@ -30,9 +33,13 @@ currentcomment="";
 modeC=false;
 modeR=false;
 //where to put data from database
+//post i forgot to change the name
   account!: Observable<any[]>;
+  //for comment
   comments!: Observable<any[]>;
+  // for reply
   reply!: Observable<any[]>;
+
   constructor(public database: Database, private FireDb: AngularFireDatabase) {
 
   this.account = FireDb.list('/post').valueChanges();
@@ -49,8 +56,11 @@ modeR=false;
 }
   ngOnInit(): void {
    
-  
-    
+
+  }
+  //deley loading
+  delay(ms: number) {
+    return new Promise( resolve => setTimeout(resolve, ms) );
   }
 
 //posting
@@ -129,6 +139,13 @@ modeR=false;
            this.currentpost=post;
            this.modeC=true;
            this.modeR=false;
+           const starCountRef1 = ref(this.database, 'post/'+ this.currentpost +'/like/'+ this.username);
+           onValue(starCountRef1, (snapshot) => {
+            const db1 = snapshot.val();  
+         this.likers = db1.name;
+            
+         
+            }); 
            
         }
         //display reply
@@ -143,5 +160,22 @@ modeR=false;
        }
 
 
-
+        like(value:any){
+           if(value == 0 || value == undefined || value == null){
+           update(ref(this.database, 'post/' + this.currentpost),{
+             likes:1
+             } );
+             set(ref(this.database, 'post/'+ this.currentpost +'/like/'+ this.username), {   
+               name: this.username
+              }); 
+       }else{
+         this.likecounter = value + 1;
+         update(ref(this.database, 'post/' + this.currentpost),{
+           likes:this.likecounter
+           } );
+           set(ref(this.database, 'post/'+ this.currentpost +'/like/'+ this.username), {   
+             name: this.username
+            }); 
        }
+    }
+}

@@ -71,4 +71,8 @@
   #btn{
     border: none;
     background: none;
+    margin: auto;
+  }
+  .ctr{
+    text-align: center;
   }
