@@ -38,7 +38,7 @@
                         <div class="d-flex flex-row icons d-flex align-items-center"  > 
                                 <!-- unlike funtion -->
                             <i class="fa fa-heart" (click)="unlike(z.likes)" *ngIf="this.likers == this.username"></i>  
-                            <!-- unliking funtion -->
+                            <!-- liking funtion -->
                             <i class="fa fa-heart-o" *ngIf="this.likers != this.username" (click)="like(z.likes)"></i><p>{{z.likes}}</p>
                         </div>
                         <!-- displaying comment section -->
