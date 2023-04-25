@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Database, onValue,ref } from '@angular/fire/database';
 import { Router,NavigationStart, Event as NavigationEvent } from '@angular/router';
 
 @Component({
@@ -13,7 +14,9 @@ export class NaviComponent implements OnInit {
   ala = false;
   event$ 
   val  ="" ;
-  constructor(private router:Router) {
+  name="";
+  username = sessionStorage.getItem('id');
+  constructor(private router:Router,public database: Database) {
 
     this.event$
     =this.router.events
@@ -50,8 +53,13 @@ export class NaviComponent implements OnInit {
           });
 
 
-
-
+          const starCountRef = ref(this.database,'notify' + this.username);
+          onValue(starCountRef, (snapshot) => {
+            const db = snapshot.val();
+            this.name = db.name;
+      
+          })
+              console.log(this.name)
 
     
    }

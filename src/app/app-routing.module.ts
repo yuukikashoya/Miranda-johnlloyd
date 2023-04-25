@@ -4,6 +4,7 @@ import { AlaFBComponent } from './ala-fb/ala-fb.component';
 import { DisplayComponent } from './display/display.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
+import { NotificationComponent } from './notification/notification.component';
 
 
 
@@ -13,7 +14,8 @@ const routes: Routes = [
   {path: 'login',component:LoginComponent},
   {path: '',redirectTo:'signup',pathMatch:'full' },
   {path: 'fb',component:AlaFBComponent},
-  {path: 'display',component:DisplayComponent}
+  {path: 'display',component:DisplayComponent},
+  {path: 'noti',component:NotificationComponent}
 
 ];
 

@@ -16,6 +16,7 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { AlaFBComponent } from './ala-fb/ala-fb.component';
 import { NaviComponent } from './navi/navi.component';
+import { NotificationComponent } from './notification/notification.component';
 
 
 
@@ -28,6 +29,7 @@ import { NaviComponent } from './navi/navi.component';
     DisplayComponent,
     AlaFBComponent,
     NaviComponent,
+    NotificationComponent,
     
   ],
   imports: [

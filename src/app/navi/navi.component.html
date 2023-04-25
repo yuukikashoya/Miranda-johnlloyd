@@ -1,13 +1,14 @@
 <div class="topnav">
     <a routerLink="/login" *ngIf="this.log != true"class="left">Login</a>
-    <a class="active left"  *ngIf="this.log == true">Login</a>
+    <a routerLink="/login" class="active left"  *ngIf="this.log == true">Login</a>
     <a routerLink="/signup" *ngIf="this.sign != true"class="left">SIgn up</a>
-    <a class="active left"  *ngIf="this.sign == true">SIgn up</a>
+    <a routerLink="/login" class="active left"  *ngIf="this.sign == true">SIgn up</a>
     <a routerLink="/display" *ngIf="this.dis != true"class="left">User table</a>
-    <a class="active left"  *ngIf="this.dis == true">User table</a>
+    <a routerLink="/login" class="active left"  *ngIf="this.dis == true">User table</a>
     <a routerLink="/fb" *ngIf="this.ala != true"class="left">Post</a>
-    <a class="active left"  *ngIf="this.ala == true">Post</a>
+    <a routerLink="/login" class="active left"  *ngIf="this.ala == true">Post</a>
 
 
-    <a routerLink="/fb" class="right">Notification <I class="fa fa-bell-o"></I></a>
+    <a routerLink="/noti" class="right"  *ngIf="this.name != this.username">Notification <I class="fa fa-bell-o"></I></a>
+    <a routerLink="/noti" class="right" *ngIf="this.name == this.username">Notification <I class="fa fa-bell"></I></a>
   </div>
