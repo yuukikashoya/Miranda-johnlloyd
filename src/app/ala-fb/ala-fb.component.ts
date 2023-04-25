@@ -141,8 +141,8 @@ export class AlaFBComponent implements OnInit {
   }
   //delete comment
   delcomment(value: any) {
-    remove(ref(this.database, '/post/' + this.currentpost + '/comment/' + value));
-
+    remove(ref(this.database, '/post/' + this.currentpost + '/comment/ ' + value));
+console.log(value)
   }
   //delete reply
   delreply(value: any) {
