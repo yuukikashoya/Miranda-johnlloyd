@@ -69,6 +69,16 @@
     cursor: pointer;
   }
   #btn{
-    border: none;
+    border: solid 1px;
+    border-color: transparent;
     background: none;
+    margin: auto;
+
+  }
+  #btn:hover{
+    border: solid 1px;
+    border-color: black;
+  }
+  .ctr{
+    text-align: center;
   }

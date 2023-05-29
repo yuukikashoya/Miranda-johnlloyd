@@ -1,8 +1,5 @@
 <div class="container middle">
-  <button class="lipat" routerLink="/signup">Sign Up</button>
-  <button class="lipat" routerLink="/fb">Post</button>
-  <button class="lipat" routerLink="/login">Login</button>
-<br>
+
 <form  #updateform="ngForm" (ngSubmit)="update(updateform.value)">
   <input type="text" ngModel id="email" hidden  [(ngModel)]="email" placeholder ="Change Email" name ="email">
   <input type="text" ngModel id="name"  readonly [(ngModel)]="name" placeholder ="name" name ="name">
