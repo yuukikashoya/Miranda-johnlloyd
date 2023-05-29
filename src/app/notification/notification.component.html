@@ -1,0 +1,15 @@
+<div class="container">
+    <div class="jumbotron jumbotron-fluid bg-dark text-white rounder" >
+        <span *ngFor="let z of notification | async;">
+        <p *ngIf='this.username == z.poster && z.type == "comment"'>{{z.name}} commented on your post.</p>
+        <hr  *ngIf='this.username == z.poster && z.type == "comment"'>
+        <p *ngIf='this.username == z.poster && z.type == "reply"'>{{z.name}} replied on your post.</p>
+        <hr  *ngIf='this.username == z.poster && z.type == "reply"'>
+        <p *ngIf='this.username == z.poster && z.type == "love"'>{{z.name}} loved on your post.</p>
+        <hr  *ngIf='this.username == z.poster && z.type == "love"'>
+    </span>
+   
+    
+        <!-- <p>user name Love your post.</p> -->
+    </div>
+ </div>
