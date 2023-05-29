@@ -6,12 +6,7 @@
 	
 		<div class="card">
 			
-				<a class="lipat">
-				
-					<button class="lipat" routerLink="/login">Login</button>
-					<button class="lipat" routerLink="/display">Table</button>
-					<button class="lipat" routerLink="/fb">Post</button>
-					</a>
+
 			<div class="card-header">
 				<h3>Sign Up</h3>	
 
@@ -47,15 +42,32 @@
 							<span class="input-group-text"><i class="fas fa-book-open"></i></span>
 							
 					
-						<select #roles name="eme"  [(ngModel)]="set"  >
+						<select #roles name="eme"  id="set" ngModel name="set"  >
 							<option disabled selected value default> -- select an option -- </option>
-							<option value="ban">Ban</option>
-							<option value="allow">Allow</option>
+							<option value="ban">Ban view post</option>
+							<option value="allow">Allow view post</option>
+
+						  </select>	
+					
+					
+						</div>
+					</div>
+					<div class="input-group form-group ">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><i class="fas fa-user"></i></span>
+							
+					
+
+						  <select #roles name="eme"  id="admin" ngModel name="admin"  >
+							<option disabled selected value default> -- select an option -- </option>
+							<option value="admin">Admin</option>
+							<option value="user">user</option>
 
 						  </select>	
 					
 						</div>
 					</div>
+					
 					<div class="form-group">
 						<input type="submit"  value="Sign Up" name="signup_submit" id="saveData" class="btn float-right login_btn">
                        
