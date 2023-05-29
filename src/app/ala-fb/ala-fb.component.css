@@ -9,7 +9,7 @@
 .textarea {
     border: 1px #ddd solid;
     width: 400px;
-    height: 120px;
+    height: 60px;
     font: 9pt Consolas;
     width: 100%;
 }
@@ -20,10 +20,17 @@
     padding-top: 10px;
     padding-right: 10px;
     padding-left: 50px;
+    cursor: pointer;
 }
 .cross{
-    cursor: pointer;;
+    cursor: pointer;
+    opacity: 0.5;
+  
 }
+.cross:hover {
+    opacity: 3;
+  }
+
 .avatar {
     vertical-align: middle;
     width: 40px;
@@ -31,4 +38,47 @@
     border-radius: 50%;
     float: left;
     background-color: azure;
+    cursor: pointer;
+  }
+  .hand{
+    cursor: pointer;
+  }
+  .icon {
+    background: url(https://media4.giphy.com/media/a6pzK009rlCak/giphy.gif?cid=6c09b952697v4htjifyr5mtdexcr1akckadvtdl2xpw4888e&rid=giphy.gif&ct=g) no-repeat scroll 7px 7px;
+    padding-left:30px;
+    
+  }
+  .kick{
+    float: right;
+    border-radius: 10px;
+  }
+  small {
+    padding-left: 15px;
+  }
+  .ox{
+   color:red;
+   cursor:pointer
+  }
+  .logo{
+
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    float: left;
+    background-color: azure;
+    cursor: pointer;
+  }
+  #btn{
+    border: solid 1px;
+    border-color: transparent;
+    background: none;
+    margin: auto;
+
+  }
+  #btn:hover{
+    border: solid 1px;
+    border-color: black;
+  }
+  .ctr{
+    text-align: center;
   }

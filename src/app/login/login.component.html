@@ -4,11 +4,7 @@
 	<div class="d-flex justify-content-center h-100">
 		<div class="card">
            
-			<a class="lipat">
-				<button class="lipat" routerLink="/signup">Sign Up</button>
-				<button class="lipat" routerLink="/fb">Post</button>
-				<button class="lipat" routerLink="/display">Table</button>
-				</a>
+
 
 			<div class="card-header">
 				<h3> Log in</h3>
@@ -21,7 +17,7 @@
 							<span class="input-group-text"><i class="
 								fab fa-google"></i></span>
 						</div>
-						<input type="text" class="form-control"  ngModel name="email" id="email" placeholder="Email">
+						<input type="text" class="form-control" required ngModel name="email" id="email" placeholder="Email">
 						
 					</div>
 
@@ -29,7 +25,7 @@
 						<div class="input-group-prepend">
 							<span class="input-group-text"><i class="fas fa-key"></i></span>
 						</div>
-						<input type="password" class="form-control" ngModel name="password" id="password" placeholder="Password">
+						<input type="password" class="form-control" required ngModel name="password" id="password" placeholder="Password">
 					</div>
 					<div class="row align-items-center remember">
 					

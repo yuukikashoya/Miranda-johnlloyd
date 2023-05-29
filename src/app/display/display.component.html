@@ -1,8 +1,5 @@
 <div class="container middle">
-  <button class="lipat" routerLink="/signup">Sign Up</button>
-  <button class="lipat" routerLink="/fb">Post</button>
-  <button class="lipat" routerLink="/login">Login</button>
-<br>
+
 <form  #updateform="ngForm" (ngSubmit)="update(updateform.value)">
   <input type="text" ngModel id="email" hidden  [(ngModel)]="email" placeholder ="Change Email" name ="email">
   <input type="text" ngModel id="name"  readonly [(ngModel)]="name" placeholder ="name" name ="name">
@@ -19,6 +16,7 @@
       <th scope="col">Email</th>
       <th scope="col">name</th>
       <th scope="col">password</th>
+
       <th scope="col">Action</th>
     </tr>
   </thead>
@@ -28,7 +26,8 @@
       <td>{{z.email}}</td>
       <td>{{z.name}}</td>
       <td>{{z.password}}</td>
-      <td *ngIf="z.email == this.session" class="high"><button class="btn-primary" (click)="edit(z) ">edit</button> </td>
+
+      <td  class="high"><button *ngIf="z.email == this.session || this.admin == true" class="btn-primary" (click)="edit(z) ">edit</button> </td>
     </tr>
 
 

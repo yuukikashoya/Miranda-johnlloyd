@@ -16,7 +16,7 @@ export class SignupComponent implements OnInit {
   
   }
 set="";
-
+admin=true;
 uuid = "";
 ab = "";
 role = true;
@@ -31,7 +31,7 @@ role = true;
   
       
      if (  value.email == null || value.email == "" || value.password == null || value.password == "" 
-      ||  value.name == null || value.name == "" ||  this.set == null || this.set == ""
+      ||  value.name == null || value.name == "" ||  value.set == null || value.set == ""||  value.admin == null || value.admin == ""
       ){
         console.log(this.set)
       alert('Fill the form ');
@@ -42,10 +42,15 @@ role = true;
   
         
       else {
-        if(value.user == "allow"){
+        if(value.set == "allow"){
           this.role = true;
-        }else if(value.user == "ban"){
+        }else if(value.set == "ban"){
           this.role = false;
+        }
+        if(value.admin == "admin"){
+          this.admin = true;
+        }else if(value.admin == "user"){
+          this.admin = false;
         }
         this.uuid = "user" +Math.floor(100000 + Math.random() * 900000);
     set(ref(this.database, 'accounts/' + value.email), {
@@ -53,7 +58,8 @@ role = true;
         email: value.email,
         name: value.name,
         password: value.password,
-        user: this.role
+        user: this.role,
+        admin: this.admin
   
   
        }); 
